@@ -1,3 +1,7 @@
+const posibleTypes = [1, 2];
+const posibleProtocol = [66, 67, 68];
+const posibleStatus = [0, 1];
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -30,9 +34,6 @@ function generateEventDate() {
 }
 
 function generateMessage() {
-  const posibleTypes = [1, 2];
-  const posibleProtocol = [66, 67, 68];
-  const posibleStatus = [0, 1];
   const eventDate = generateEventDate();
   const eventType = pickRandom(posibleTypes);
   const eventProtocol = pickRandom(posibleProtocol);
@@ -65,4 +66,20 @@ function parseMesage(msg) {
   };
 }
 
-export { generateMessage, parseMesage };
+function validateMesage (msg) {
+    if (!posibleTypes.includes(msg.type)) {
+        return false;
+    }
+
+    if (!posibleProtocol.includes(msg.protocolo)) {
+        return false;
+    }
+
+    if (!posibleStatus.includes(msg.status)) {
+        return false;
+    }
+
+    return true;
+}
+
+export { generateMessage, parseMesage, validateMesage };

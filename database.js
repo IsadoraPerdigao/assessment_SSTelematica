@@ -1,15 +1,15 @@
 import pkg from "pg";
 import format from "pg-format";
-import { parseMesage } from "./mesage.js";
+import "dotenv/config";
 
 const { Client } = pkg;
 
 const client = new Client({
-  user: "isadora",
-  password: "q1q2q3",
-  host: "localhost",
-  database: "ss_telematica_teste",
-  port: 5432,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  database: process.env.DB,
+  port: parseInt(process.env.DB_PORT),
 });
 
 const startDataBase = async () => {
@@ -18,9 +18,8 @@ const startDataBase = async () => {
 };
 
 async function saveMesage(msg) {
-  const msgToSave = parseMesage(msg);
-  const msgKeys = Object.keys(msgToSave);
-  const msgValues = Object.values(msgToSave);
+  const msgKeys = Object.keys(msg);
+  const msgValues = Object.values(msg);
 
   const query = format(
     `

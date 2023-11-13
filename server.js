@@ -1,5 +1,6 @@
 import dgram from "node:dgram";
 import { saveMesage, startDataBase } from "./database.js";
+import { parseMesage, validateMesage } from "./mesage.js";
 
 const server = dgram.createSocket("udp4");
 
@@ -9,7 +10,15 @@ server.on("error", (err) => {
 });
 
 server.on("message", (msg, rinfo) => {
-  saveMesage(msg);
+  const parsedMsg = parseMesage(msg);
+  const isValidMsg = validateMesage(parsedMsg);
+  
+  if (isValidMsg) {
+    saveMesage(parsedMsg);
+  } else {
+    console.log(`Invalid message: ${msg}`)
+  }
+
   console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
 });
 
