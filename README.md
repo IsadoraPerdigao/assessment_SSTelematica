@@ -2,7 +2,9 @@
 
 ## Configuração
 
-1. Criar arquivo .env com base no arquivo .env.example preenchendo as informações de configuração do banco:
+1. Certifique-se de que você possui o Node.js instalado e rode o comando `npm install` no terminal para instalar as dependências do projeto.
+
+2. Criar arquivo .env com base no arquivo .env.example preenchendo as informações de configuração do banco:
     DB_USER
     DB_PASSWORD
     DB_HOST
@@ -22,7 +24,6 @@ npm start
 
 Database connected
 server listening 0.0.0.0:41234
-
 ```
 
 Mensagens recebidas serão persistidas na tabela `dev_status`.
@@ -42,3 +43,5 @@ Sending message >DATA1,66,231112231728,1,ID=418<
 
 ```
 
+## Interrupção da aplicação
+Para interromper a execução, tanto do servidor como do cliente, utilize `ctrl + c`. 
