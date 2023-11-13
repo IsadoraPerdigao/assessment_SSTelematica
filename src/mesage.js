@@ -66,20 +66,20 @@ function parseMesage(msg) {
   };
 }
 
-function validateMesage (msg) {
-    if (!posibleTypes.includes(msg.type)) {
-        return false;
-    }
+function validateMesage(msg) {
+  if (!posibleTypes.includes(msg.type)) {
+    return false;
+  }
 
-    if (!posibleProtocol.includes(msg.protocolo)) {
-        return false;
-    }
+  if (!posibleProtocol.includes(msg.protocolo)) {
+    return false;
+  }
 
-    if (!posibleStatus.includes(msg.status)) {
-        return false;
-    }
+  if (!posibleStatus.includes(msg.status)) {
+    return false;
+  }
 
-    return true;
+  return true;
 }
 
 export { generateMessage, parseMesage, validateMesage };
